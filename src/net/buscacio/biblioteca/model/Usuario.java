@@ -7,7 +7,7 @@ public class Usuario {
 
     public static int _id = 1;
 
-    private Integer id;
+    private int id;
     private String nome;
     private String email;
     private int telefone;
@@ -23,12 +23,12 @@ public class Usuario {
         this.livrosEmprestados = new ArrayList<>();
     }
 
-    public static int get_id() {
-        return _id;
-    }
-
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setNome(String nome) {
@@ -47,21 +47,14 @@ public class Usuario {
         return livrosEmprestados;
     }
 
-    public void setLivrosEmprestados(List<Livro> livrosEmprestados) {
-        this.livrosEmprestados = livrosEmprestados;
-    }
-
     @Override
     public String toString() {
         return "{" +
-                "\nid: " + getId() +
+                "\nid: " + id +
                 "\nnome: " + nome +
                 "\nemail: " + email  +
                 "\ntelefone: " + telefone +
                 "\nlivros emprestados: " + livrosEmprestados +
                 "\n}";
     }
-
-
-
 }

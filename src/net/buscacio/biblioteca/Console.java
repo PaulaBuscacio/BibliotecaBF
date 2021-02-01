@@ -22,14 +22,14 @@ public class Console {
 
         System.out.println("\nDigite uma opção do menu");
         System.out.println("1. visualizar usuários \n2. visualizar acervo \n3. visualizar categorias" +
-                           " \n4. emprestar livro \n5. devolver livro \n6. cadastrar usuário " +
-                           "\n7.cadastrar livro  \n8. cadastrar categoria \n9. remover usuário " +
-                           "\n10. remover livro \n11. remover categoria \n0. Sair");
+                           "\n4. verificar usuario \n5. verificar livro \n6. emprestar livro " +
+                           "\n7. devolver livro \n8. cadastrar usuário " +
+                           "\n9. cadastrar livro  \n10. cadastrar categoria \n11. remover usuário " +
+                           "\n12. remover livro \n13. remover categoria \n0. Sair");
 
             return opcaoMenu.nextInt();
 
     }
-
 
 
     public Usuario criarUsuario() {
@@ -40,7 +40,7 @@ public class Console {
         novoUsuario.setNome(opcaoMenu.next());
         System.out.println("\nDigite o email do usuário: ");
         novoUsuario.setEmail(opcaoMenu.next());
-        System.out.println("\nDigite o telefone do usuário: ");
+        System.out.println("\nDigite o telefone do usuário (somente números): ");
         novoUsuario.setTelefone(opcaoMenu.nextInt());
 
         return novoUsuario;
@@ -105,26 +105,15 @@ public class Console {
 
     }
 
-    public void emprestarLivro() throws Exception {
+    public int verificarUsuario() {
         System.out.println("\nDigite o id do usuário: ");
-        int idUsuario = opcaoMenu.nextInt();
-        System.out.println("\nDigite o código do livro a ser emprestado: ");
+        int  idUsuario = opcaoMenu.nextInt();
+        return idUsuario;
+    }
+
+    public int verficarLivro() {
+        System.out.println("\nDigite o código do livro:");
         int codigoLivro = opcaoMenu.nextInt();
-        biblioteca.emprestarLivro(codigoLivro, idUsuario);
-
+        return codigoLivro;
     }
-
-    public void devolverLivro() throws Exception {
-        System.out.println("\nDigite o id do usuário: ");
-        int idUsuario = opcaoMenu.nextInt();
-        System.out.println("\nDigite o código do livro a ser devolvido: ");
-        int codigo = opcaoMenu.nextInt();
-       // usuario.getLivrosEmprestados().add(codigo);
-        biblioteca.devolverLivro(codigo, idUsuario);
-
-    }
-
-
-
-
 }

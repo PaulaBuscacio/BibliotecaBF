@@ -27,13 +27,8 @@ public class Livro {
         this.autor = autor;
     }
 
-
     public int getCodigo() {
         return codigo;
-    }
-
-    public static int get_codigo() {
-        return _codigo;
     }
 
     public String getTitulo() {
@@ -76,8 +71,8 @@ public class Livro {
     @Override
     public String toString() {
 
-        return "{\nCódigo: " + get_codigo() + "\nTítulo: " + getTitulo() +
-                "\nAutor: " + getAutor() + "\nGênero: " + getCategoria() + "\nDisponível: " + isDisponivel() + "\n}";
+        return "{\nCódigo: " + codigo + "\nTítulo: " + titulo +
+                "\nAutor: " + autor + "\nGênero: " + categoria + "\nDisponível: " + isDisponivel() + "\n}";
     }
 
 

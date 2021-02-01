@@ -22,24 +22,12 @@ public class Biblioteca {
         return usuarios;
     }
 
-    public void setUsuarios(List<Usuario> usuarios) {
-        this.usuarios = usuarios;
-    }
-
     public List<Livro> getAcervo() {
         return acervo;
     }
 
-    public void setAcervo(List<Livro> acervo) {
-        this.acervo = acervo;
-    }
-
     public List<Categoria> getCategorias() {
         return categorias;
-    }
-
-    public void setCategorias(List<Categoria> categorias) {
-        this.categorias = categorias;
     }
 
 
@@ -119,17 +107,14 @@ public class Biblioteca {
 
     }
 
-    public void emprestarLivro(int codigoLivro, int idUsuario) throws Exception {
+    public void emprestarLivro(int codigo, int idUsuario) throws Exception {
         //verificar se livro existe
-        Livro livroEmprestar = this.findLivro(codigoLivro);
+        Livro livroEmprestar = this.findLivro(codigo);
+
         Usuario usuario = this.findUsuario(idUsuario);
-//
-//        if(livroEmprestar != null) {
-//            if(usuario != null) {
-                usuario.getLivrosEmprestados().add(livroEmprestar);
-//            }
-//
-//        }
+
+        usuario.getLivrosEmprestados().add(livroEmprestar);
+
         if(livroEmprestar.isDisponivel()) {
             livroEmprestar.setDisponivel(false);
 
@@ -137,8 +122,8 @@ public class Biblioteca {
 
     }
 
-    public void devolverLivro(int codigoLivro, int idUsuario) throws Exception {
-        Livro livroDevolver = this.findLivro(codigoLivro);
+    public void devolverLivro(int codigo, int idUsuario) throws Exception {
+        Livro livroDevolver = this.findLivro(codigo);
         Usuario usuario = this.findUsuario(idUsuario);
 
         if(!livroDevolver.isDisponivel()) {
@@ -148,8 +133,9 @@ public class Biblioteca {
     }
 
 
-    private  Livro findLivro(int codigo) throws Exception {
+    public  Livro findLivro(int codigo) throws Exception {
         for (Livro livro : this.getAcervo()) {
+
             if (livro.getCodigo() == codigo) {
                 return livro;
             }
@@ -157,7 +143,7 @@ public class Biblioteca {
         throw new Exception("Livro não existe.");
     }
 
-    private Usuario findUsuario( int idUsuario) throws  Exception{
+    public Usuario findUsuario( int idUsuario) throws  Exception{
 
         for (Usuario usuario : this.getUsuarios()) {
             if (usuario.getId() == idUsuario) {
@@ -167,9 +153,4 @@ public class Biblioteca {
         throw new Exception("Usuário inexistente");
     }
 
-    private int livroDisponivel(int codigo) throws Exception {
-        Livro livro = this.findLivro(codigo);
-        return livro.isDisponivel() ? LIVRO_DISPONIVEL : LIVRO_INDISPONIVEL;
-
-    }
 }
