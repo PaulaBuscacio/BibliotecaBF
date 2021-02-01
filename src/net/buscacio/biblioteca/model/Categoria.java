@@ -4,22 +4,24 @@ public class Categoria {
     //coloca id automaticamente
     public  static int _id = 1;
 
-    private final int id;
+    private  int id;
     private String nome;
 
-    public Categoria(String nome) {
+    public Categoria() {}
+
+      public Categoria(String nome) {
         this.id = _id++;
         this.nome = nome;
     }
 
-    public int get_id() {
-        return id;
-    }
 
     public int getId() {
         return id;
     }
 
+    public void set_id(int id) {
+        Categoria._id = id;
+    }
 
     public String getNome() {
         return nome;
@@ -29,5 +31,11 @@ public class Categoria {
         this.nome = nome;
     }
 
-
+    @Override
+    public String toString() {
+        return "{" +
+                "\nid: " + id +
+                ", \nnome: " + nome +
+                "\n}";
+    }
 }

@@ -7,19 +7,33 @@ public class Livro {
     private int codigo;
     private String titulo;
     private String autor;
-    private String categoria;
+    private Categoria categoria;
+    private boolean disponivel = true;
+
 
     public Livro() {}
 
-    public Livro(String titulo, String autor, String categoria) {
+    public Livro(String titulo, String autor, Categoria categoria, boolean disponivel) {
         this.codigo = _codigo++;
         this.titulo = titulo;
         this.autor = autor;
         this.categoria = categoria;
+        this.disponivel = disponivel;
     }
+
+    public Livro(String titulo, String autor) {
+        this.codigo = _codigo++;
+        this.titulo = titulo;
+        this.autor = autor;
+    }
+
 
     public int getCodigo() {
         return codigo;
+    }
+
+    public static int get_codigo() {
+        return _codigo;
     }
 
     public String getTitulo() {
@@ -38,18 +52,33 @@ public class Livro {
         this.autor = autor;
     }
 
-    public String getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+   public int setIdCategoria(int idCategoria) {
+        return idCategoria;
+   }
+
+    public boolean isDisponivel() {
+
+        return disponivel;
+    }
+
+    public void setDisponivel(boolean disponivel) {
+        this.disponivel = disponivel;
     }
 
     @Override
     public String toString() {
 
-        return "{\nCódigo: " + getCodigo() + "\nTítulo: " + getTitulo() +
-                "\nAutor: " + getAutor() + "\nGênero: " + getCategoria() + "\n}";
+        return "{\nCódigo: " + get_codigo() + "\nTítulo: " + getTitulo() +
+                "\nAutor: " + getAutor() + "\nGênero: " + getCategoria() + "\nDisponível: " + isDisponivel() + "\n}";
     }
+
+
 }
